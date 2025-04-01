@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+}
+
+.content {
+    display: flex;
+    gap: 30px;
+}
+
+.sidebar {
+    flex: 0 0 250px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    color: #2c3e50;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+#categories-list {
+    list-style: none;
+}
+
+#categories-list li {
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+#categories-list li:hover {
+    background-color: #f0f0f0;
+}
+
+#categories-list li.active {
+    background-color: #3498db;
+    color: white;
+}
+
+#categories-list li span.count {
+    float: right;
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+#categories-list li.active span.count {
+    background-color: #2980b9;
+    color: white;
+}
+
+.courses {
+    flex: 1;
+}
+
+.courses h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.course-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-image {
+    height: 160px;
+    background-color: #eee;
+    background-size: cover;
+    background-position: center;
+}
+
+.course-info {
+    padding: 15px;
+}
+
+.course-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.course-info p.description {
+    color: #666;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 60px;
+}
+
+.course-category {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+/* Category Tree Styles */
+#categories-list ul.subcategories {
+    list-style: none;
+    margin-left: 15px;
+    padding-left: 0;
+    border-left: 2px solid #e0e0e0;
+}
+
+#categories-list li {
+    position: relative;
+    padding: 8px 12px;
+    margin: 4px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#categories-list li:hover {
+    background-color: #f0f0f0;
+}
+
+#categories-list li.active {
+    background-color: #3498db;
+    color: white;
+}
+
+#categories-list li.active .count {
+    background-color: #2980b9;
+    color: white;
+}
+
+#categories-list .category-name {
+    display: inline-block;
+    max-width: calc(100% - 40px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#categories-list .count {
+    float: right;
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    /* Keep your existing tablet styles */
+    .content { flex-direction: column; }
+    .course-info h3, 
+    .course-info p.description {
+      white-space: normal;
+      overflow: visible;
+      height: auto;
+    }
+  }
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .courses-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 25px; /* Increased gap between cards */
+    }
+
+    .course-card {
+        display: block; /* Ensure full width */
+    }
+
+    .course-info h3 {
+        white-space: normal; /* Allow title to wrap */
+        overflow: visible; /* Show full title */
+        text-overflow: clip; /* Don't truncate */
+        -webkit-line-clamp: initial; /* Remove line clamp */
+        display: block; /* Default display */
+        height: auto; /* Auto height */
+    }
+
+    .course-info p.description {
+        -webkit-line-clamp: initial; /* Remove line clamp */
+        display: block; /* Default display */
+        height: auto; /* Auto height */
+        overflow: visible; /* Show full description */
+        margin-bottom: 15px; /* Slightly more space */
+    }
+}
